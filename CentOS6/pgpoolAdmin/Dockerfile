@@ -4,7 +4,7 @@ FROM centos:centos6
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_ADMIN_VERSION 3.4rc1
+ENV PGPOOL_ADMIN_VERSION 3.4rc2
 
 RUN yum update -y
 RUN yum install -y wget

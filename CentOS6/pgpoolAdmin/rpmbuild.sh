@@ -14,4 +14,4 @@ mkdir BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
 cp /tmp/pgpoolAdmin-$PGPOOL_ADMIN_VERSION.tar.gz SOURCES
 cp /tmp/pgpoolAdmin-$PGPOOL_ADMIN_VERSION/pgpoolAdmin.spec /var/lib/pgsql/rpmbuild/SPECS
 cd /var/lib/pgsql/rpmbuild/SPECS
-rpmbuild -ba pgpoolAdmin.spec --define="dist .pgdg"
+rpmbuild -ba pgpoolAdmin.spec --define="dist .pgdg" --define="pgpooladmin_version $PGPOOL_ADMIN_VERSION"
