@@ -1,4 +1,4 @@
-How to build pgpool-II 3.4.x rpms with PostgreSQL 9.3.
+How to build pgpool-II 3.4.x rpms with PostgreSQL 9.2.
 ==================
 
 ### 1. Build docker image

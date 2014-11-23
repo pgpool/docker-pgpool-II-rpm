@@ -3,8 +3,7 @@
 # Run this script as user "postgres".
 PGPOOL_VERSION=${PGPOOL_VERSION:-"3.4.0"}
 PGPOOL_BRANCH=${PGPOOL_BRANCH:-"V3_4_STABLE"}
-POSTGRESQL_VERSION=9.3
-POSTGRESQL_VERSION2=93
+
 cd /var/lib/pgsql
 mkdir rpmbuild
 cd rpmbuild
