@@ -1,10 +1,7 @@
 #! /bin/sh
 # Script to create pgpool-II and PostgreSQL RPMs
 # Run this script as user "postgres".
-PGPOOL_VERSION=${PGPOOL_VERSION:-"3.3.4"}
-PGPOOL_BRANCH=${PGPOOL_BRANCH:-"V3_3_STABLE"}
-POSTGRESQL_VERSION=9.2
-POSTGRESQL_VERSION2=92
+
 cd /var/lib/pgsql
 mkdir rpmbuild
 cd rpmbuild
@@ -30,5 +27,6 @@ cd ..
 diff -crN pgpool-II-$PGPOOL_VERSION head/pgpool-II-$PGPOOL_VERSION > pgpool-II-head.patch
 cd /var/lib/pgsql
 cp /tmp/pgpool-II-head.patch rpmbuild/SOURCES
+cp /dev/null rpmbuild/SOURCES/pgpool-II-head.patch
 cd rpmbuild/SPECS
-rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" --define="dist .pgdg"
+rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" --define="dist .rhel6"
