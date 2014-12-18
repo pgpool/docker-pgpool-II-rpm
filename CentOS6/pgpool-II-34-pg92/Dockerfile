@@ -10,13 +10,12 @@ ENV POSTGRESQL_VERSION2 92
 ENV YUMPG pgdg-centos92-9.2-6.noarch.rpm
 
 RUN yum update -y
-RUN yum install -y wget
-RUN wget http://yum.postgresql.org/$POSTGRESQL_VERSION/redhat/rhel-6-x86_64/$YUMPG
-RUN rpm -ivh $YUMPG
+RUN rpm -Uvh http://yum.postgresql.org/$POSTGRESQL_VERSION/redhat/rhel-6-x86_64/$YUMPG
 RUN yum install -y postgresql$POSTGRESQL_VERSION2-devel postgresql$POSTGRESQL_VERSION2 \
     postgresql$POSTGRESQL_VERSION2-server tar rpm-build pam-devel gcc git openssl-devel \
     libmemcached-devel
 
+RUN yum install -y wget
 RUN wget http://www.pgpool.net/download.php?f=pgpool-II-$PGPOOL_VERSION.tar.gz \
     -O /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz
 

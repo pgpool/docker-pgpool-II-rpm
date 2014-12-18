@@ -4,14 +4,15 @@ FROM centos:centos6
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_ADMIN_VERSION 3.4rc2
+ENV PGPOOL_ADMIN_VERSION 3.4.0
+ENV POSTGRESQL_VERSION 9.3
+ENV POSTGRESQL_VERSION2 93
 
 RUN yum update -y
-RUN yum install -y wget
-RUN wget http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
-RUN rpm -ivh pgdg-centos93-9.3-1.noarch.rpm
-RUN yum install -y postgresql93 postgresql93-server tar rpm-build
-RUN yum install -y php-pgsql
+
+RUN rpm -Uvh http://yum.postgresql.org/$POSTGRESQL_VERSION/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
+RUN yum install -y postgresql$POSTGRESQL_VERSION2 postgresql$POSTGRESQL_VERSION2-server tar rpm-build
+RUN yum install -y php-pgsql wget
 ADD rpmbuild.sh /tmp/rpmbuild.sh
 ADD build.sh /tmp/build.sh
 CMD /tmp/build.sh
