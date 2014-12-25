@@ -19,7 +19,6 @@ if [ $# -gt 1 ];then
 	echo "inserting proxy address $2."
     else
 	echo "wrong parameter $1".
-	exit 1
     fi
 else
     proxy_set=n
