@@ -12,9 +12,9 @@ cp /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz rpmbuild/SOURCES
 # checkout branch
 case $PGPOOL_VERSION in
     3.4.*) PGPOOL_BRANCH="V3_4_STABLE"
-	use_src=true;;
+    use_src=true;;
     3.3.*) PGPOOL_BRANCH="V3_3_STABLE"
-	use_src=false;;
+    use_src=false;;
     *) echo "wrong pgpool-II version $PGPOOL_VERSION";exit 1;;
 esac
 
