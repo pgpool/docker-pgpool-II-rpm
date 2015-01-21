@@ -10,7 +10,7 @@
 myvol=$HOME/volum
 
 # Docker image file name.
-image=pgpool2_33_rpm
+image=pgpool2_35_rpm
 
 if [ $# -gt 1 ];then
     if [ $1 = "-p" ];then
@@ -33,7 +33,7 @@ if [ $proxy_set = "y" ];then
     cat Dockerfile|sed "/ENV/ aENV http_proxy $proxy" > Dockerfile.proxy
     cp Dockerfile.proxy Dockerfile
 fi
-sudo docker build -t $image .
+sudo docker build --no-cache -t $image .
 
 echo "======= End docker build ======="
 
@@ -41,7 +41,7 @@ if [ $proxy_set = "y" ];then
     cp Dockerfile.orig Dockerfile
 fi
 
-for i in 9.4 9.3 9.2
+for i in 9.4 9.3
 do
     echo "======= Start rpm build for PostgreSQL $i ======="
     sudo docker run --rm -e POSTGRESQL_VERSION=$i -v $myvol:/var/volum $image

@@ -1,0 +1,14 @@
+[pgpool34]
+name=pgpool-II 3.4 $releasever - $basearch
+baseurl=http://www.pgpool.net/yum/rpms/3.4/redhat/rhel-$releasever-$basearch
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGPOOL2
+
+[pgpool34-source]
+name=pgpool-II 3.4 $releasever - $basearch - Source
+failovermethod=priority
+baseurl=http://www.pgpool.net/yum/srpms/3.4/redhat/rhel-$releasever-$basearch
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGPOOL2

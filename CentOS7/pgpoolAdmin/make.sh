@@ -39,6 +39,6 @@ if [ $proxy_set = "y" ];then
     cp Dockerfile.orig Dockerfile
 fi
 
-sudo docker run -i -v $myvol:/var/volum -t $image
+sudo docker run --rm -v $myvol:/var/volum $image
 
 echo "Done. RPMS/SRPS are placed on $myvol."
