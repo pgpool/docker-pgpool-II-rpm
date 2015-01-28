@@ -1,15 +1,13 @@
-How to build pgpool-II 3.4.x rpms with PostgreSQL 9.3.
+How to build pgpoolAdmin
 ==================
 
-### 1. Build docker image
+```
+	sh make.sh
+```
+will create pgpoolAdmin rpms/srpms under $HOME/volum.
+If you want to change this, edit "myvol=..." line in make.sh.
+
+If you need to use proxy, type:
 
 ```
-	sudo docker build -t pgpooladmin_34_pg93_rpm .
-```
-
-### 2. Run docker container
-
-```
-	sudo docker run -i -v /home/yourname/volum:/var/volum -t pgpooladmin_34_pg93_rpm
-```
-### 3. You will find RPMs and SRPMs under /home/yourname/volum.
+	sh make.sh -p proxy_address
