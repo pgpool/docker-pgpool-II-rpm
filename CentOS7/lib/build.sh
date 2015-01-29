@@ -13,7 +13,7 @@ case $POSTGRESQL_VERSION in
     "*") echo wrong postgresql version \"$POSTGRESQL_VERSION\";exit 1;;
 esac
 
-rpm -Uvh http://yum.postgresql.org/$POSTGRESQL_VERSION/redhat/rhel-7-x86_64/$YUMPG
+yum install -y http://yum.postgresql.org/$POSTGRESQL_VERSION/redhat/rhel-7-x86_64/$YUMPG
 yum install -y postgresql$POSTGRESQL_VERSION2-devel postgresql$POSTGRESQL_VERSION2 \
     postgresql$POSTGRESQL_VERSION2-server
 
