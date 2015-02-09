@@ -19,5 +19,6 @@ mkdir BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
 cp /tmp/pgpoolAdmin-$PGPOOL_ADMIN_VERSION.tar.gz SOURCES
 cp /tmp/pgpoolAdmin-$PGPOOL_ADMIN_VERSION/pgpoolAdmin.spec /var/lib/pgsql/rpmbuild/SPECS
 cp /tmp/pgpoolAdmin.patch rpmbuild/SOURCES
+diff -crN pgpoolAdmin-$PGPOOL_ADMIN_VERSION head/pgpoolAdmin-$PGPOOL_ADMIN_VERSION > SOURCES/pgpoolAdmin.patch
 cd /var/lib/pgsql/rpmbuild/SPECS
 rpmbuild -ba pgpoolAdmin.spec --define="dist .rhel6" --define="pgpooladmin_version $PGPOOL_ADMIN_VERSION"
