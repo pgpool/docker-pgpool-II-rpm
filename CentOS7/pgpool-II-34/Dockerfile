@@ -4,15 +4,16 @@ FROM centos:centos7
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.4.0
+ENV PGPOOL_VERSION 3.4.1
 
+RUN yum install -y deltarpm
 RUN yum update -y
 RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel \
     libmemcached-devel wget
 
 # this is neccessary for "su postgres"
 RUN rpm -Uvh http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-redhat94-9.4-1.noarch.rpm
-RUN yum install -y postgresql-server
+RUN yum install -y postgresql94-server
 
 RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
 
