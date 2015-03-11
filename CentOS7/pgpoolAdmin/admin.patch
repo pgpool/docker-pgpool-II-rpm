@@ -1,0 +1,54 @@
+diff --git a/CentOS6/pgpoolAdmin/README.md b/CentOS6/pgpoolAdmin/README.md
+index 706d1c9..1ad7b6b 100644
+--- a/CentOS6/pgpoolAdmin/README.md
++++ b/CentOS6/pgpoolAdmin/README.md
+@@ -1,15 +1,13 @@
+-How to build pgpool-II 3.4.x rpms with PostgreSQL 9.3.
++How to build pgpoolAdmin
+ ==================
+ 
+-### 1. Build docker image
+-
+ ```
+-	sudo docker build -t pgpooladmin_34_pg93_rpm .
++	sh make.sh
+ ```
++will create pgpoolAdmin rpms/srpms under $HOME/volum.
++If you want to change this, edit "myvol=..." line in make.sh.
+ 
+-### 2. Run docker container
++If you need to use proxy, type:
+ 
+ ```
+-	sudo docker run -i -v /home/yourname/volum:/var/volum -t pgpooladmin_34_pg93_rpm
+-```
+-### 3. You will find RPMs and SRPMs under /home/yourname/volum.
++	sh make.sh -p proxy_address
+diff --git a/CentOS6/pgpoolAdmin/rpmbuild.sh b/CentOS6/pgpoolAdmin/rpmbuild.sh
+index 8bc267d..a3a5373 100755
+--- a/CentOS6/pgpoolAdmin/rpmbuild.sh
++++ b/CentOS6/pgpoolAdmin/rpmbuild.sh
+@@ -2,14 +2,22 @@
+ # Script to create pgpoolAdmin RPMs
+ # Run this script as user "postgres".
+ 
+-wget http://www.pgpool.net/download.php?f=pgpoolAdmin-$PGPOOL_ADMIN_VERSION.tar.gz -O /tmp/pgpoolAdmin-$PGPOOL_ADMIN_VERSION.tar.gz
++# sources from tar ball in donwload page
+ cd /tmp
+ tar xfz pgpoolAdmin-$PGPOOL_ADMIN_VERSION.tar.gz
++
++# sources from git
++# do nothing because they are in /var/lib/pgsql/pgpooladmin
++
++# create a patch
++diff -crN pgpoolAdmin-$PGPOOL_ADMIN_VERSION /var/lib/pgsql/pgpooladmin > pgpoolAdmin.patch
++
+ cd /var/lib/pgsql
+ mkdir rpmbuild
+ cd rpmbuild
+ mkdir BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
+ cp /tmp/pgpoolAdmin-$PGPOOL_ADMIN_VERSION.tar.gz SOURCES
+ cp /tmp/pgpoolAdmin-$PGPOOL_ADMIN_VERSION/pgpoolAdmin.spec /var/lib/pgsql/rpmbuild/SPECS
++cp /tmp/pgpoolAdmin.patch rpmbuild/SOURCES
+ cd /var/lib/pgsql/rpmbuild/SPECS
+ rpmbuild -ba pgpoolAdmin.spec --define="dist .rhel6" --define="pgpooladmin_version $PGPOOL_ADMIN_VERSION"
