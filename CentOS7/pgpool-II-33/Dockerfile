@@ -4,7 +4,7 @@ FROM centos:centos7
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.3.5
+ENV PGPOOL_VERSION 3.3.7
 
 RUN yum install -y deltarpm
 RUN yum update -y

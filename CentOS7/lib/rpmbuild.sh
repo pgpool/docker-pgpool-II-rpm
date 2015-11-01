@@ -46,4 +46,6 @@ diff -crN pgpool-II-$PGPOOL_VERSION head/pgpool-II-$PGPOOL_VERSION > pgpool-II-h
 cd /var/lib/pgsql
 cp /tmp/pgpool-II-head.patch rpmbuild/SOURCES
 cd rpmbuild/SPECS
-rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" --define="dist .rhel7"
+rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" \
+    --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" \
+    --define="dist .rhel7"

@@ -4,7 +4,7 @@ FROM centos:centos7
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.4.1
+ENV PGPOOL_VERSION 3.4.3
 
 RUN yum install -y deltarpm
 RUN yum update -y
@@ -25,4 +25,5 @@ RUN yum install -y make
 
 ADD rpmbuild.sh /tmp/
 ADD build.sh /tmp/
+ADD pgpool.conf.sample.patch2 /tmp/
 CMD /tmp/build.sh
