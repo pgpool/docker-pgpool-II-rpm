@@ -11,8 +11,12 @@ cp /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz rpmbuild/SOURCES
 
 # checkout branch
 case $PGPOOL_VERSION in
-    3.4.*) PGPOOL_BRANCH="V3_4_STABLE";;
-    3.3.*) PGPOOL_BRANCH="V3_3_STABLE";;
+    3.5*) PGPOOL_BRANCH="V3_5_STABLE"
+          dir="src/";;
+    3.4.*) PGPOOL_BRANCH="V3_4_STABLE"
+           dir="src/";;
+    3.3.*) PGPOOL_BRANCH="V3_3_STABLE"
+           dir="";;
     *) echo "wrong pgpool-II version $PGPOOL_VERSION";exit 1;;
 esac
 
@@ -20,12 +24,6 @@ cd /var/lib/pgsql/pgpool2
 git pull
 git checkout $PGPOOL_BRANCH
 git pull
-
-if [ $PGPOOL_BRANCH = "V3_4_STABLE" ];then
-    dir="src/"
-else
-    dir=""
-fi
 
 cp ${dir}pgpool.spec ../rpmbuild/SPECS
 cp ${dir}redhat/pgpool.conf.sample.patch ../rpmbuild/SOURCES
