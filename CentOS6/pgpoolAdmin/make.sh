@@ -28,7 +28,7 @@ fi
 echo "======= Start docker build ======="
 if [ $proxy_set = "y" ];then
     cp Dockerfile Dockerfile.orig
-    cat Dockerfile|sed "/ENV/ aENV http_proxy $proxy" > Dockerfile.proxy
+    cat Dockerfile|sed -e "/ENV/ aENV http_proxy $proxy" -e "/ENV/ aENV https_proxy $proxy" > Dockerfile.proxy
     cp Dockerfile.proxy Dockerfile
 fi
 sudo docker build -t $image .
