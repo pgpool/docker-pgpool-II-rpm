@@ -30,7 +30,7 @@ cp ../lib/build.sh .
 cp ../lib/rpmbuild.sh .
 if [ $proxy_set = "y" ];then
     cp Dockerfile Dockerfile.orig
-    cat Dockerfile|sed "/ENV/ aENV http_proxy $proxy" > Dockerfile.proxy
+    cat Dockerfile|sed -e "/ENV/ aENV http_proxy $proxy" -e "/ENV/ aENV https_proxy $proxy" > Dockerfile.proxy
     cp Dockerfile.proxy Dockerfile
 fi
 sudo docker build -t $image .
@@ -41,7 +41,7 @@ if [ $proxy_set = "y" ];then
     cp Dockerfile.orig Dockerfile
 fi
 
-for i in 9.4 9.3
+for i in 9.5 9.4 9.3
 do
     echo "======= Start rpm build for PostgreSQL $i ======="
     sudo docker run --rm -e POSTGRESQL_VERSION=$i -v $myvol:/var/volum $image
