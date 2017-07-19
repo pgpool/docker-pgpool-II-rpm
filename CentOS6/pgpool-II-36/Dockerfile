@@ -4,7 +4,7 @@ FROM centos:centos6
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.4.9
+ENV PGPOOL_VERSION 3.6.1
 
 RUN yum update -y
 RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel \

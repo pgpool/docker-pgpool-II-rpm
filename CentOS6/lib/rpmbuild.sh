@@ -11,6 +11,8 @@ cp /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz rpmbuild/SOURCES
 
 # checkout branch
 case $PGPOOL_VERSION in
+    3.6*) PGPOOL_BRANCH="V3_6_STABLE"
+          dir="src/";;
     3.5*) PGPOOL_BRANCH="V3_5_STABLE"
           dir="src/";;
     3.4.*) PGPOOL_BRANCH="V3_4_STABLE"

@@ -10,7 +10,7 @@
 myvol=$HOME/volum
 
 # Docker image file name.
-image=pgpool2_34_rpm
+image=pgpool2_34_rhel7_rpm
 
 if [ $# -gt 1 ];then
     if [ $1 = "-p" ];then
@@ -42,7 +42,7 @@ if [ $proxy_set = "y" ];then
     cp Dockerfile.orig Dockerfile
 fi
 
-for i in 9.5 9.4 9.3 9.2
+for i in 9.6 9.5 9.4 9.3
 do
     echo "======= Start rpm build for PostgreSQL $i ======="
     sudo docker run --rm -e POSTGRESQL_VERSION=$i -v $myvol:/var/volum -t $image

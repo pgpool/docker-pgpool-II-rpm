@@ -4,15 +4,18 @@ FROM centos:centos7
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.3.9
+ENV PGPOOL_VERSION 3.3.16
 
 RUN yum install -y deltarpm
 RUN yum update -y; exit 0
 RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel \
-    libmemcached-devel wget make
+    libmemcached-devel wget make jade libxslt docbook-dtds docbook-style-xsl \
+    docbook-style-dsssl docbook docbook-dsssl docbook-sgml docbook-xsl openjade
+
+RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog
 
 # this is neccessary for "su postgres"
-RUN rpm -Uvh http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-redhat94-9.4-1.noarch.rpm
+RUN rpm -Uvh http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-redhat94-9.4-3.noarch.rpm
 RUN yum install -y postgresql94-server
 
 RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres

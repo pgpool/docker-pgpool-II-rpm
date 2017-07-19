@@ -1,19 +1,20 @@
 # Docker file to create pgpool-II rpm
 
-FROM centos:centos6
+FROM centos:centos7
 
 MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.4.9
+ENV PGPOOL_VERSION 3.6.5
 
-RUN yum update -y
+RUN yum update -y; exit 0
 RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel \
-    libmemcached-devel wget make jade libxslt docbook-dtds docbook-style-xsl \
-    docbook-style-dsssl docbook docbook-dsssl docbook-sgml docbook-xsl openjade
+    libmemcached-devel wget make docbook docbook-dsssl docbook-sgml docbook-xsl openjade \
+    jade libxslt docbook-dtds docbook-style-xsl docbook-style-dsssl
 
-RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog
+sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog
 
 # this is neccessary for "su postgres"
+RUN rpm -Uvh http://yum.postgresql.org/9.4/redhat/rhel-7-x86_64/pgdg-redhat94-9.4-3.noarch.rpm
 RUN yum install -y postgresql-server
 
 RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
