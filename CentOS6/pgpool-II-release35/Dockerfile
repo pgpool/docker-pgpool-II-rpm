@@ -2,7 +2,7 @@
 
 FROM centos:centos6
 
-MAINTAINER Yugo Nagata <nagata@sraoss.co.jp>
+MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
 ENV http_proxy http://www-proxy:80/
 
@@ -14,7 +14,7 @@ RUN yum update -y
 
 RUN yum install -y rpm-build
 
-RUN useradd rpmuser 
+RUN useradd rpmuser
 
 ADD rpmbuild.sh /tmp/rpmbuild.sh
 ADD build.sh /tmp/build.sh

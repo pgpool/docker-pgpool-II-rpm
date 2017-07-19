@@ -10,16 +10,16 @@
 myvol=$HOME/volum
 
 # Docker image file name.
-image=pgpool2_35_rhel6_rpm
+image=pgpool2_36_rhel7_rpm
 
 if [ $# -gt 1 ];then
     if [ $1 = "-p" ];then
-        proxy=$2
-        proxy_set=y
-        echo "inserting proxy address $2."
+	proxy=$2
+	proxy_set=y
+	echo "inserting proxy address $2."
     else
-        echo "wrong parameter $1".
-        exit 1
+	echo "wrong parameter $1".
+	exit 1
     fi
 else
     proxy_set=n
@@ -33,7 +33,7 @@ if [ $proxy_set = "y" ];then
     cat Dockerfile|sed -e "/ENV/ aENV http_proxy $proxy" -e "/ENV/ aENV https_proxy $proxy" > Dockerfile.proxy
     cp Dockerfile.proxy Dockerfile
 fi
-sudo docker build --no-cache -t $image .
+sudo docker build -t $image .
 
 echo "======= End docker build ======="
 
