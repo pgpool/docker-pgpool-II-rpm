@@ -2,7 +2,7 @@
 
 FROM centos:centos6
 
-MAINTAINER Tatsuo Ishii <ishii@sraoss.co.jp>
+MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
 ENV PGPOOL_ADMIN_VERSION 3.5.3
 ENV POSTGRESQL_VERSION 9.4

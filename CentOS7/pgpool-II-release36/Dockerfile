@@ -2,7 +2,7 @@
 
 FROM centos:centos7
 
-MAINTAINER Yugo Nagata <pengbo@sraoss.co.jp>
+MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
 ENV http_proxy http://www-proxy.:80/
 
