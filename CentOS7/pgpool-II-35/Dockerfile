@@ -4,7 +4,7 @@ FROM centos:centos7
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.5.9
+ENV PGPOOL_VERSION 3.5.11
 
 RUN yum update -y; exit 0
 RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel \

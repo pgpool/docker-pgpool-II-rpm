@@ -7,6 +7,7 @@ export POSTGRESQL_VERSION2=`echo $POSTGRESQL_VERSION|sed s/\\\\.//`
 
 # install PostgreSQL rpms
 case $POSTGRESQL_VERSION in
+    "10")  YUMPG=pgdg-centos10-10-2.noarch.rpm;;
     "9.6") YUMPG=pgdg-centos96-9.6-3.noarch.rpm;;
     "9.5") YUMPG=pgdg-centos95-9.5-3.noarch.rpm;;
     "9.4") YUMPG=pgdg-centos94-9.4-3.noarch.rpm;;

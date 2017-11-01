@@ -30,7 +30,7 @@ git pull
 cp ${dir}pgpool.spec ../rpmbuild/SPECS
 cp ${dir}redhat/pgpool.conf.sample.patch ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool.init ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool.sysconfig ../rpmbuild/SOURCES
+cp ${dir}redhat/pgpool_rhel*.sysconfig ../rpmbuild/SOURCES
 
 ./configure --with-pgsql=/usr/pgsql-$POSTGRESQL_VERSION
 make
