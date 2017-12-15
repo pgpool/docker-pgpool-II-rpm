@@ -42,7 +42,7 @@ if [ $proxy_set = "y" ];then
     cp Dockerfile.orig Dockerfile
 fi
 
-for i in 9.6 9.5 9.4 9.3
+for i in 9.6 9.5 9.4 9.3 10
 do
     echo "======= Start rpm build for PostgreSQL $i ======="
     sudo docker run --rm -e POSTGRESQL_VERSION=$i -v $myvol:/var/volum -t $image

@@ -4,7 +4,7 @@ FROM centos:centos7
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.4.12
+ENV PGPOOL_VERSION 3.4.14
 
 RUN yum install -y deltarpm
 RUN yum update -y; exit 0

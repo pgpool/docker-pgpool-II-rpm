@@ -4,7 +4,7 @@ FROM centos:centos7
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.3.16
+ENV PGPOOL_VERSION 3.3.18
 
 RUN yum install -y deltarpm
 RUN yum update -y; exit 0
