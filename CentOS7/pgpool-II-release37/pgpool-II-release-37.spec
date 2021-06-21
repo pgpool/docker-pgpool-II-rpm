@@ -1,6 +1,6 @@
 Name:		pgpool-II-release
 Version:	3.7
-Release:	1
+Release:	2
 Summary:	pgpool-II 3.7.x official RPMs for RHEL - Yum Repository Configuration
 Vendor:		PgPool Global Development Group
 Group:		System Environment/Base
@@ -33,9 +33,6 @@ install -pm 644 %{SOURCE1}  \
 %clean
 rm -rf %{buildroot}
 
-%post
-/bin/rpm --import %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-PGPOOL2
-
 %files
 %defattr(-,root,root,-)
 %config %{_sysconfdir}/yum.repos.d/*
@@ -43,6 +40,8 @@ rm -rf %{buildroot}
 %{_sysconfdir}/pki/rpm-gpg/*
 
 %changelog
+* Thu May 21 2020 Bo Peng <pengbo@sraoss.co.jp> - 3.7-2
+- Remove "rpm import RPM-GPG-KEY-PGPOOL2"
 * Tue Oct 17 2017 Bo Peng <pengbo@sraoss.co.jp> - 3.7-1
 - Initial Package
 * Mon Nov 21 2016 Bo Peng <pengbo@sraoss.co.jp> - 3.6-1

@@ -4,8 +4,6 @@ FROM centos:centos6
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV http_proxy http://www-proxy:80/
-
 ENV RPM_USER rpmuser
 
 RUN yum -y install yum-plugin-fastestmirror

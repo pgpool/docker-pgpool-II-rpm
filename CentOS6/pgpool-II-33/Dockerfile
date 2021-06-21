@@ -4,7 +4,7 @@ FROM centos:centos6
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.3.18
+ENV PGPOOL_VERSION 3.3.22
 
 RUN yum update -y
 RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel \

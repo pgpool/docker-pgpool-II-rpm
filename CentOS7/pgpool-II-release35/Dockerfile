@@ -4,10 +4,9 @@ FROM centos:centos7
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV http_proxy http://www-proxy.:80/
-
 ENV RPM_USER rpmuser
 
+RUN yum clean all
 RUN yum -y install yum-plugin-fastestmirror
 RUN echo "include_only=.jp" >>  /etc/yum/pluginconf.d/fastestmirror.conf
 RUN yum update -y; exit 0

@@ -11,6 +11,12 @@ cp /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz rpmbuild/SOURCES
 
 # checkout branch
 case $PGPOOL_VERSION in
+    4.2*) PGPOOL_BRANCH="V4_2_STABLE"
+          dir="src/";;
+    4.1*) PGPOOL_BRANCH="V4_1_STABLE"
+          dir="src/";;
+    4.0*) PGPOOL_BRANCH="V4_0_STABLE"
+          dir="src/";;
     3.7*) PGPOOL_BRANCH="V3_7_STABLE"
           dir="src/";;
     3.6*) PGPOOL_BRANCH="V3_6_STABLE"
@@ -35,6 +41,7 @@ cp ${dir}redhat/pgpool.init ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool_rhel*.sysconfig ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool.service ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool_socket_dir.patch ../rpmbuild/SOURCES
+cp ${dir}redhat/pcp_unix_domain_path.patch ../rpmbuild/SOURCES
 
 ./configure --with-pgsql=/usr/pgsql-$POSTGRESQL_VERSION
 make
@@ -51,4 +58,5 @@ cp /tmp/pgpool-II-head.patch rpmbuild/SOURCES
 cd rpmbuild/SPECS
 rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" \
     --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" \
-    --define="dist .rhel7"
+    --define="dist .rhel7" \
+    --define="pgsql_ver $POSTGRESQL_VERSION3"

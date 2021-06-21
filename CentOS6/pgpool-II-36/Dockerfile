@@ -4,17 +4,18 @@ FROM centos:centos6
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 3.6.7
+ENV PGPOOL_VERSION 3.6.19
 
 RUN yum update -y
-RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel \
+RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel flex bc \
     libmemcached-devel wget make jade libxslt docbook-dtds docbook-style-xsl \
     docbook-style-dsssl docbook docbook-dsssl docbook-sgml docbook-xsl openjade
 
 RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog
 
 # this is neccessary for "su postgres"
-RUN yum install -y postgresql-server
+RUN yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-6-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+RUN yum install -y postgresql12-server
 
 RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
 
