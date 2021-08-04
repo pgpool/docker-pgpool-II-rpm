@@ -10,7 +10,7 @@
 myvol=$HOME/volum
 
 # Docker image file name.
-image=pgpool2_36_rhel7_rpm
+image=pgpool2_36_rhel8_rpm
 
 if [ $# -gt 1 ];then
     if [ $1 = "-p" ];then
