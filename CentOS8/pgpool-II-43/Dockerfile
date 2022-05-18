@@ -1,6 +1,6 @@
 # Docker file to create pgpool-II rpm
 
-FROM centos:centos8
+FROM rockylinux:8
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
