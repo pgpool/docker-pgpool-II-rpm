@@ -44,6 +44,7 @@ cp ${dir}redhat/pgpool_rhel*.sysconfig ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool.service ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool_socket_dir.patch ../rpmbuild/SOURCES
 cp ${dir}redhat/pcp_unix_domain_path.patch ../rpmbuild/SOURCES
+cp ${dir}redhat/pgpool_log.patch ../rpmbuild/SOURCES
 
 ./configure --with-pgsql=/usr/pgsql-$POSTGRESQL_VERSION
 make
