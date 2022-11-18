@@ -11,6 +11,8 @@ cp /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz rpmbuild/SOURCES
 
 # checkout branch
 case $PGPOOL_VERSION in
+    4.4*) PGPOOL_BRANCH="V4_4_STABLE"
+          dir="src/";;
     4.3*) PGPOOL_BRANCH="V4_3_STABLE"
           dir="src/";;
     4.2*) PGPOOL_BRANCH="V4_2_STABLE"
@@ -45,6 +47,8 @@ cp ${dir}redhat/pgpool.service ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool_socket_dir.patch ../rpmbuild/SOURCES
 cp ${dir}redhat/pcp_unix_domain_path.patch ../rpmbuild/SOURCES
 cp ${dir}redhat/pgpool_log.patch ../rpmbuild/SOURCES
+cp ${dir}redhat/pgpool_sudoers.d ../rpmbuild/SOURCES
+cp ${dir}redhat/pgpool_tmpfiles.d ../rpmbuild/SOURCES
 
 ./configure --with-pgsql=/usr/pgsql-$POSTGRESQL_VERSION
 make

@@ -65,5 +65,5 @@ cp /tmp/pgpool-II-head.patch rpmbuild/SOURCES
 cd rpmbuild/SPECS
 rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" \
     --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" \
-    --define="dist .rhel8" \
+    --define="dist .rhel9" \
     --define="pgsql_ver $POSTGRESQL_VERSION3"
