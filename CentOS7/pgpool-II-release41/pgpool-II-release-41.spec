@@ -1,6 +1,6 @@
 Name:		pgpool-II-release
 Version:	4.1
-Release:	2
+Release:	3
 Summary:	pgpool-II 4.1.x official RPMs for RHEL - Yum Repository Configuration
 Vendor:		PgPool Global Development Group
 Group:		System Environment/Base
@@ -40,6 +40,8 @@ rm -rf %{buildroot}
 %{_sysconfdir}/pki/rpm-gpg/*
 
 %changelog
+* Tue Nov 22 2022 Bo Peng <pengbo@sraoss.co.jp> - 4.1-3
+- Update GPG key
 * Wed May 21 2020 Bo Peng <pengbo@sraoss.co.jp> - 4.1-2
 - Remove "rpm import RPM-GPG-KEY-PGPOOL2"
 * Fri Sep 06 2019 Bo Peng <pengbo@sraoss.co.jp> - 4.1-1

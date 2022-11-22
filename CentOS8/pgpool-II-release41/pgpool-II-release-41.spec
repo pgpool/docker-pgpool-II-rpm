@@ -43,6 +43,8 @@ rm -rf %{buildroot}
 %{_sysconfdir}/pki/rpm-gpg/*
 
 %changelog
+* Tue Nov 22 2022 Bo Peng <pengbo@sraoss.co.jp> - 4.1-2
+- Update GPG key
 * Fri Sep 06 2019 Bo Peng <pengbo@sraoss.co.jp> - 4.1-1
 - Initial Package
 * Wed Sep 19 2018 Bo Peng <pengbo@sraoss.co.jp> - 4.0-1
