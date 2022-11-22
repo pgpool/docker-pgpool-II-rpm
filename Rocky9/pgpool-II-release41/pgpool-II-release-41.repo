@@ -7,7 +7,6 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGPOOL2
 
 [pgpool41-source]
 name=pgpool-II 4.1 $releasever - $basearch - Source
-failovermethod=priority
 baseurl=https://www.pgpool.net/yum/srpms/4.1/redhat/rhel-$releasever-$basearch
 enabled=0
 gpgcheck=1
