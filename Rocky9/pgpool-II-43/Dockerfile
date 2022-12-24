@@ -15,12 +15,12 @@ RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/s
 
 # this is neccessary for "su postgres"
 RUN dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-RUN dnf -qy module disable postgresql
 RUN dnf install -y postgresql14-server
 
 RUN dnf install -y epel-release llvm-devel clang-devel
 RUN dnf install -y ccache
 
+RUN git config --global http.version HTTP/1.1
 RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
 
 # download pgpool-II tar ball
