@@ -21,10 +21,10 @@ RUN dnf install -y epel-release llvm-devel clang-devel
 RUN dnf install -y ccache
 
 RUN git config --global http.version HTTP/1.1
-RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
+#RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
 
 # download pgpool-II tar ball
-RUN wget http://www.pgpool.net/download.php?f=pgpool-II-$PGPOOL_VERSION.tar.gz -O /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz
+#RUN wget http://www.pgpool.net/download.php?f=pgpool-II-$PGPOOL_VERSION.tar.gz -O /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz
 
 COPY rpmbuild.sh /tmp/
 COPY build.sh /tmp/

@@ -19,10 +19,10 @@ RUN yum install -y postgresql14-server
 RUN yum install -y epel-release centos-release-scl
 RUN yum install -y llvm5.0 llvm-toolset-7 llvm-toolset-7-llvm-devel
 
-RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
+#RUN su -c 'cd /var/lib/pgsql && git clone http://git.postgresql.org/git/pgpool2.git' postgres
 
 # download pgpool-II tar ball
-RUN wget http://www.pgpool.net/download.php?f=pgpool-II-$PGPOOL_VERSION.tar.gz -O /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz
+#RUN wget http://www.pgpool.net/download.php?f=pgpool-II-$PGPOOL_VERSION.tar.gz -O /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz
 
 COPY rpmbuild.sh /tmp/
 COPY build.sh /tmp/

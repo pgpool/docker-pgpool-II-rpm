@@ -10,7 +10,7 @@ cp pgpool-II-4.4.X.tar.gz $HOME/volum/
 
 Run the following command.
 ```
-	sh make.sh
+sh make.sh
 ```
 
 The command above will create pgpool-II 4.4 rpms/srpms under $HOME/volum.
@@ -19,5 +19,5 @@ If you want to change this, edit "myvol=..." line in make.sh.
 If you need to use proxy, type:
 
 ```
-	sh make.sh -p proxy_address
+sh make.sh -p proxy_address
 ```

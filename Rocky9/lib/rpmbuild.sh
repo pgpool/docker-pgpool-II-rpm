@@ -3,11 +3,21 @@
 # Run this script as user "postgres".
 
 cd /var/lib/pgsql
-mkdir rpmbuild
-cd rpmbuild
-mkdir BUILD BUILDROOT RPMS SOURCES SPECS SRPMS
-cd ..
-cp /tmp/pgpool-II-$PGPOOL_VERSION.tar.gz rpmbuild/SOURCES
+mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+cp /var/volum/pgpool-II-$PGPOOL_VERSION.tar.gz /var/lib/pgsql/rpmbuild/SOURCES
+tar zxf rpmbuild/SOURCES/pgpool-II-$PGPOOL_VERSION.tar.gz
+
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/pgpool.spec /var/lib/pgsql/rpmbuild/SPECS
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool.conf.sample.patch /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool.init /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool_rhel*.sysconfig /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool.service /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool_socket_dir.patch /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pcp_unix_domain_path.patch /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool_log.patch /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool_sudoers.d /var/lib/pgsql/rpmbuild/SOURCES
+cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool_tmpfiles.d /var/lib/pgsql/rpmbuild/SOURCES
+
 
 # checkout branch
 case $PGPOOL_VERSION in
@@ -34,35 +44,26 @@ case $PGPOOL_VERSION in
     *) echo "wrong pgpool-II version $PGPOOL_VERSION";exit 1;;
 esac
 
-cd /var/lib/pgsql/pgpool2
-git pull
-git checkout $PGPOOL_BRANCH
-git pull
+# If Release number is greater than 1, generate pgpool-II-head.patch and apply it.
+#cd /var/lib/pgsql/pgpool2
+#git pull
+#git checkout $PGPOOL_BRANCH
+#git pull
+#./configure --with-pgsql=/usr/pgsql-$POSTGRESQL_VERSION
+#make
+#make dist
+#mkdir /tmp/head
+#cp pgpool-II-$PGPOOL_VERSION.tar.gz /tmp/head
+#cd /tmp/head
+#tar xfz pgpool-II-$PGPOOL_VERSION.tar.gz
+#cd ..
+#tar xfz pgpool-II-$PGPOOL_VERSION.tar.gz
+#diff -crN pgpool-II-$PGPOOL_VERSION head/pgpool-II-$PGPOOL_VERSION > pgpool-II-head.patch
+#cd /var/lib/pgsql
+#cp /tmp/pgpool-II-head.patch rpmbuild/SOURCES
 
-cp ${dir}pgpool.spec ../rpmbuild/SPECS
-cp ${dir}redhat/pgpool.conf.sample.patch ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool.init ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool_rhel*.sysconfig ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool.service ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool_socket_dir.patch ../rpmbuild/SOURCES
-cp ${dir}redhat/pcp_unix_domain_path.patch ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool_log.patch ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool_sudoers.d ../rpmbuild/SOURCES
-cp ${dir}redhat/pgpool_tmpfiles.d ../rpmbuild/SOURCES
 
-./configure --with-pgsql=/usr/pgsql-$POSTGRESQL_VERSION
-make
-make dist
-mkdir /tmp/head
-cp pgpool-II-$PGPOOL_VERSION.tar.gz /tmp/head
-cd /tmp/head
-tar xfz pgpool-II-$PGPOOL_VERSION.tar.gz
-cd ..
-tar xfz pgpool-II-$PGPOOL_VERSION.tar.gz
-diff -crN pgpool-II-$PGPOOL_VERSION head/pgpool-II-$PGPOOL_VERSION > pgpool-II-head.patch
-cd /var/lib/pgsql
-cp /tmp/pgpool-II-head.patch rpmbuild/SOURCES
-cd rpmbuild/SPECS
+cd /var/lib/pgsql/rpmbuild/SPECS
 rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" \
     --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" \
     --define="dist .rhel9" \
