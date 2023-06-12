@@ -8,7 +8,7 @@ export POSTGRESQL_VERSION3=`echo "scale=0;$POSTGRESQL_VERSION*10" | bc | cut -d 
 
 dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 dnf -qy module disable postgresql
-dnf install -y postgresql$POSTGRESQL_VERSION2-server postgresql$POSTGRESQL_VERSION2-devel
+dnf install -y --enablerepo=powertools postgresql$POSTGRESQL_VERSION2-server postgresql$POSTGRESQL_VERSION2-devel
 
 su postgres < /tmp/rpmbuild.sh
 cp -rp /var/lib/pgsql/rpmbuild/RPMS /var/volum

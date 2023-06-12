@@ -5,6 +5,7 @@
 cd /var/lib/pgsql
 mkdir -p rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 cp /var/volum/pgpool-II-$PGPOOL_VERSION.tar.gz /var/lib/pgsql/rpmbuild/SOURCES
+#cp /var/volum/pgpool-II-$PGPOOL_VERSION.tar.gz /tmp
 tar zxf rpmbuild/SOURCES/pgpool-II-$PGPOOL_VERSION.tar.gz
 
 cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/pgpool.spec /var/lib/pgsql/rpmbuild/SPECS
@@ -45,6 +46,8 @@ case $PGPOOL_VERSION in
 esac
 
 # If Release number is greater than 1, generate pgpool-II-head.patch and apply it.
+#cp -r /var/volum/pgpool2 /var/lib/pgsql
+#\cp  /var/volum/pgpool2/src/pgpool.spec /var/lib/pgsql/rpmbuild/SPECS
 #cd /var/lib/pgsql/pgpool2
 #git pull
 #git checkout $PGPOOL_BRANCH
@@ -59,9 +62,7 @@ esac
 #cd ..
 #tar xfz pgpool-II-$PGPOOL_VERSION.tar.gz
 #diff -crN pgpool-II-$PGPOOL_VERSION head/pgpool-II-$PGPOOL_VERSION > pgpool-II-head.patch
-#cd /var/lib/pgsql
-#cp /tmp/pgpool-II-head.patch rpmbuild/SOURCES
-
+#cp /tmp/pgpool-II-head.patch /var/lib/pgsql/rpmbuild/SOURCES
 
 cd /var/lib/pgsql/rpmbuild/SPECS
 rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" \
