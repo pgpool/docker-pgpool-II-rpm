@@ -4,11 +4,12 @@ FROM centos:centos7
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 4.1.7
+ENV PGPOOL_VERSION 4.1.17
 
 RUN yum update -y; exit 0
 RUN yum install -y tar rpm-build pam-devel gcc git openssl-devel bc flex \
-    libmemcached-devel wget make docbook docbook-dsssl docbook-sgml docbook-xsl openjade \
+    libmemcached-devel openldap-devel wget make \
+    docbook docbook-dsssl docbook-sgml docbook-xsl openjade \
     jade libxslt docbook-dtds docbook-style-xsl docbook-style-dsssl
 
 RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog

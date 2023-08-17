@@ -7,8 +7,8 @@ MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 ENV PGPOOL_VERSION 4.0.7
 
 RUN dnf update -y; exit 0
-RUN dnf install -y --enablerepo=powertools tar rpm-build pam-devel gcc git openssl-devel bc \
-    libmemcached-devel wget make docbook-xsl openjade \
+RUN dnf install -y --enablerepo=powertools tar rpm-build gcc git openssl-devel bc \
+    pam-devel libmemcached-devel openldap-devel wget make docbook-xsl openjade \
     jade libxslt docbook-dtds docbook-style-xsl docbook-style-dsssl
 
 RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog
