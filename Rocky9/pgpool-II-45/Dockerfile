@@ -4,7 +4,7 @@ FROM rockylinux:9
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 4.5beta1
+ENV PGPOOL_VERSION 4.5.1
 
 RUN dnf update -y; exit 0
 RUN dnf install -y --enablerepo=crb tar rpm-build pam-devel gcc git openssl-devel bc \
