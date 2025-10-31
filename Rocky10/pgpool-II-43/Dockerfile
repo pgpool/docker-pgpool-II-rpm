@@ -1,6 +1,6 @@
 # Docker file to create pgpool-II rpm
 
-FROM rockylinux:9
+FROM rockylinux:10
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
@@ -14,7 +14,7 @@ RUN dnf install -y --enablerepo=crb,devel tar rpm-build pam-devel gcc git openss
 RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog
 
 # this is neccessary for "su postgres"
-RUN dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+RUN dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-10-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 RUN dnf install -y postgresql14-server
 
 RUN dnf install -y epel-release llvm-devel clang-devel

@@ -71,5 +71,5 @@ esac
 cd /var/lib/pgsql/rpmbuild/SPECS
 rpmbuild -ba pgpool.spec --define="pgpool_version $PGPOOL_VERSION" \
     --define="pg_version $POSTGRESQL_VERSION2" --define="pghome /usr/pgsql-$POSTGRESQL_VERSION" \
-    --define="dist .rhel9" \
+    --define="dist .rhel10" \
     --define="pgsql_ver $POSTGRESQL_VERSION3"

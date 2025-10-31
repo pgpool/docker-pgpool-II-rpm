@@ -8,4 +8,4 @@ cp /tmp/pgpool-II-release-43.repo $TOPDIR/SOURCES
 cp /tmp/RPM-GPG-KEY-PGPOOL2 $TOPDIR/SOURCES
 
 cd $TOPDIR/SPECS
-rpmbuild -ba pgpool-II-release-43.spec --define="dist rhel8" --define="_topdir $TOPDIR"
+rpmbuild -ba pgpool-II-release-43.spec --define="dist rhel10" --define="_topdir $TOPDIR"
