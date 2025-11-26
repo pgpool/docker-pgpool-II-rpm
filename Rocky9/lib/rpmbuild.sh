@@ -22,6 +22,8 @@ cp /var/lib/pgsql/pgpool-II-$PGPOOL_VERSION/src/redhat/pgpool_tmpfiles.d /var/li
 
 # checkout branch
 case $PGPOOL_VERSION in
+    4.7*) PGPOOL_BRANCH="V4_7_STABLE"
+          dir="src/";;
     4.6*) PGPOOL_BRANCH="V4_6_STABLE"
           dir="src/";;
     4.5*) PGPOOL_BRANCH="V4_5_STABLE"

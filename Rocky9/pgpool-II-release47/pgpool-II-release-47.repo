@@ -1,0 +1,13 @@
+[pgpool47]
+name=pgpool-II 4.7 $releasever - $basearch
+baseurl=https://www.pgpool.net/yum/rpms/4.7/redhat/rhel-$releasever-$basearch
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGPOOL2
+
+[pgpool47-source]
+name=pgpool-II 4.7 $releasever - $basearch - Source
+baseurl=https://www.pgpool.net/yum/srpms/4.7/redhat/rhel-$releasever-$basearch
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGPOOL2
