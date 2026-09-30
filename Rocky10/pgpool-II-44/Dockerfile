@@ -4,11 +4,13 @@ FROM rockylinux:10
 
 MAINTAINER Bo Peng <pengbo@sraoss.co.jp>
 
-ENV PGPOOL_VERSION 4.4.13
+ENV PGPOOL_VERSION 4.4.18
 
 RUN dnf update -y; exit 0
+RUN dnf install -y epel-release
+RUN dnf install -y  libmemcached-awesome-devel
 RUN dnf install -y --enablerepo=crb,devel tar rpm-build pam-devel gcc git openssl-devel bc \
-    libmemcached-awesome-devel openldap-devel wget make docbook-xsl openjade \
+    openldap-devel wget make docbook-xsl openjade \
     jade libxslt docbook-dtds docbook-style-xsl docbook-style-dsssl
 
 RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/share/sgml/docbook/sgml-dtd-*/catalog
@@ -17,7 +19,7 @@ RUN sed -i -e 's/^SGMLDECL "docbook.dcl"/  -- SGMLDECL "docbook.dcl" --/' /usr/s
 RUN dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-10-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 RUN dnf install -y postgresql15-server
 
-RUN dnf install -y epel-release llvm-devel clang-devel
+RUN dnf install -y llvm-devel clang-devel
 RUN dnf install -y ccache
 
 RUN git config --global http.version HTTP/1.1
